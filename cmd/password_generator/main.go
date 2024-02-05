@@ -10,6 +10,13 @@ import (
 
 func main() {
 	app := fiber.New()
+	app.Use(func(c *fiber.Ctx) error {
+		c.Set("Access-Control-Allow-Origin", "*")
+		c.Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+		c.Set("Access-Control-Allow-Headers", "Content-Type")
+
+		return c.Next()
+	})
 
 	v1router.SetupRoutesV1(app)
 	v2router.SetupRoutesV2(app)

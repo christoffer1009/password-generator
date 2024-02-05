@@ -6,5 +6,5 @@ import (
 )
 
 func SetupRoutesV1(app *fiber.App) {
-	app.Post("/v1/generate", handler.Generate)
+	app.Post("api/v1/generate", handler.Generate)
 }
